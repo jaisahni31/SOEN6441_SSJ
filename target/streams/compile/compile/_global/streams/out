@@ -1,4 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/sumitbhiungade/Downloads/play-samples-play-java-hello-world-tutorial/app/views/index.scala.html:32:20: not found: value data[0m
-[0m[[0m[31merror[0m] [0m[0m    @for(record <- data){[0m
-[0m[[0m[31merror[0m] [0m[0m                   ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
