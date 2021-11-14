@@ -42,7 +42,7 @@ public class HomeController extends Controller implements WSBodyReadables, WSBod
             return CompletableFuture.supplyAsync(() -> ok(views.html.index.render(new ArrayList<QuerySearchResult>())));
         } else {
             var post = Arrays.stream(sessionData.get().split(","))
-            .filter(e -> !e.isEmpty()).parallel().map(CacheManager.GetCache(ws)::GetTrimmedSearchResult).collect(Collectors.toList());
+            .filter(e -> !e.isEmpty()).map(k -> k.toLowerCase().trim()).distinct().limit(10).parallel().map(CacheManager.GetCache(ws)::GetTrimmedSearchResult).collect(Collectors.toList());
             var arrPost = post.toArray(new CompletableFuture[post.size()]);
             return CompletableFuture.allOf(arrPost).thenApply(v -> post.stream().map(CompletableFuture::join).collect(Collectors.toList())).thenApply(res -> {
                 return ok(views.html.index.render(res));
@@ -65,7 +65,13 @@ public class HomeController extends Controller implements WSBodyReadables, WSBod
 
     public CompletableFuture<Result> searchThread(String subreddit, Http.Request request) {
         return CacheManager.GetCache(ws).GetThreadInfo((subreddit)).thenApply((result) -> {
-            return ok(views.html.profile.render(result));
+            return ok(views.html.thread.render(result));
+        });
+    }
+
+    public CompletableFuture<Result> searchStats(String query, Http.Request request) {
+        return CacheManager.GetCache(ws).GetTrimmedSearchResult((query)).thenApply((result) -> {
+            return ok(views.html.stats.render(result));
         });
     }
 }

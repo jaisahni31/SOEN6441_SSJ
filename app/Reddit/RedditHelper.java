@@ -13,7 +13,6 @@ import play.libs.ws.*;
 import play.api.Application;
 import java.util.concurrent.CompletionStage;
 import com.fasterxml.jackson.databind.*;
-// import play.libs.Json;
 
 public class RedditHelper {
   private final WSClient ws;
@@ -24,14 +23,20 @@ public class RedditHelper {
     this.ws = ws;
   }
 
+  public WSRequest getWSInstance() {
+    WSRequest req = ws.url(endpoint + "/submission");
+    req.addQueryParameter("over_18", "false");
+    return req;
+  }
+
   public CompletionStage<List<SearchResult>> getSubredditPosts(String sr) {
     System.out.println("thread --" + sr);
 
-    WSRequest req = ws.url(endpoint + "/submission");
+    WSRequest req = this.getWSInstance();
     req.addQueryParameter("q", "");
     req.addQueryParameter("subreddit", sr);
-    req.addQueryParameter("over_18", "false");
-    req.addQueryParameter("fields", "title,author,selftext,subreddit,author_fullname,author_is_blocker,author_premium");
+    req.addQueryParameter("size", "10");
+
 
     return req.get().thenApply((WSResponse res) -> {
       try {
@@ -39,7 +44,6 @@ public class RedditHelper {
         List<SearchResult> postList = new ArrayList<SearchResult>();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         postList = Arrays.asList(mapper.readValue(res.asJson().get("data").toString(), SearchResult[].class));
-        System.out.println(postList);
         return postList;
 
       } catch (Exception e) {
@@ -50,11 +54,10 @@ public class RedditHelper {
   }
 
   public CompletionStage<List<SearchResult>> getUserPosts(String author) {
-    WSRequest req = ws.url(endpoint + "/submission");
+    WSRequest req = this.getWSInstance();
     req.addQueryParameter("q", "");
     req.addQueryParameter("author", author);
-    req.addQueryParameter("over_18", "false");
-    req.addQueryParameter("fields", "title,author,selftext,subreddit,author_fullname,author_is_blocker,author_premium");
+    req.addQueryParameter("size", "10");
 
     return req.get().thenApply((WSResponse res) -> {
       try {
@@ -62,7 +65,6 @@ public class RedditHelper {
         List<SearchResult> postList = new ArrayList<SearchResult>();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         postList = Arrays.asList(mapper.readValue(res.asJson().get("data").toString(), SearchResult[].class));
-        System.out.println(postList);
         return postList;
 
       } catch (Exception e) {
@@ -75,19 +77,17 @@ public class RedditHelper {
   public CompletionStage<List<SearchResult>> getSearchResult(String query) {
     System.out.println("query --" + query);
 
-    WSRequest req = ws.url(endpoint + "/submission");
+    WSRequest req = this.getWSInstance();
     req.addQueryParameter("q", query);
-    req.addQueryParameter("over_18", "false");
-    req.addQueryParameter("fields", "title,author,selftext,subreddit,author_fullname,author_is_blocker,author_premium");
-    // req.addQueryParameter("size", "100");
+    req.addQueryParameter("size", "50");
 
     return req.get().thenApply((WSResponse res) -> {
       try {
+
         ObjectMapper mapper = new ObjectMapper();
         List<SearchResult> postList = new ArrayList<SearchResult>();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         postList = Arrays.asList(mapper.readValue(res.asJson().get("data").toString(), SearchResult[].class));
-        System.out.println(postList);
         return postList;
 
       } catch (Exception e) {
