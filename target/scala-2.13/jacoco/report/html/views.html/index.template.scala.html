@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>index.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">index.template.scala</span></div><h1>index.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+import scala.jdk.CollectionConverters._
+
+<span class="pc" id="L24">object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[List[QuerySearchResult],play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /**/
+  def apply/*1.2*/(data : List[QuerySearchResult]):play.twirl.api.HtmlFormat.Appendable = {
+<span class="fc" id="L28">    _display_ {</span>
+      {
+/*2.2*/import helper._
+
+
+<span class="fc" id="L33">Seq[Any](format.raw/*3.1*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L34">&quot;&quot;&quot;),_display_(/*4.2*/main(&quot;Welcome&quot;)/*4.17*/ {_display_(Seq[Any](format.raw/*4.19*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L35">  &quot;&quot;&quot;),format.raw/*5.3*/(&quot;&quot;&quot;&lt;div class=&quot;container&quot;&gt;</span>
+    &lt;div class=&quot;search-wrapper&quot;&gt;
+      &lt;div class=&quot;search-wrapper__box&quot;&gt;
+        &lt;h2 class=&quot;title&quot;&gt;Redditlytics&lt;/h2&gt;
+        &lt;form class=&quot;search-form&quot; action=&quot;#&quot; method=&quot;GET&quot;&gt;
+          &lt;input
+            required
+            autofocus
+            name=&quot;q&quot;
+            type=&quot;text&quot;
+            class=&quot;input&quot;
+            placeholder=&quot;Enter Search Term&quot;
+            id=&quot;searchBox&quot;
+          /&gt;
+          &lt;button class=&quot;button is-normal ml-2&quot; id=&quot;go&quot;&gt;Search&lt;/button&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+<span class="fc" id="L54">    &quot;&quot;&quot;),_display_(/*24.6*/for(record &lt;- data) yield /*24.25*/ {_display_(Seq[Any](format.raw/*24.27*/(&quot;&quot;&quot;</span>
+      &quot;&quot;&quot;),format.raw/*25.7*/(&quot;&quot;&quot;&lt;section class=&quot;searchResultBox&quot;&gt;
+        &lt;h3 class=&quot;subtitle is-5 has-text-weight-bold&quot;&gt;
+          Search terms:
+          &lt;a href=&quot;/stats/&quot;&quot;&quot;),_display_(/*28.28*/record/*28.34*/.getSearchTerm()),format.raw/*28.50*/(&quot;&quot;&quot;&quot;&gt;
+            &quot;&quot;&quot;),_display_(/*29.14*/record/*29.20*/.getSearchTerm()),format.raw/*29.36*/(&quot;&quot;&quot;
+          &quot;&quot;&quot;),format.raw/*30.11*/(&quot;&quot;&quot;&lt;/a&gt;
+        &lt;/h3&gt;
+
+
+        &quot;&quot;&quot;),_display_(/*34.10*/if(!record.getData().isEmpty)/*34.39*/ {_display_(Seq[Any](format.raw/*34.41*/(&quot;&quot;&quot;
+          &quot;&quot;&quot;),format.raw/*35.11*/(&quot;&quot;&quot;&lt;div class=&quot;table-container&quot;&gt;
+            &lt;table class=&quot;table is-hoverable is-fullwidth is-bordered break-td&quot;&gt;
+              &lt;thead&gt;
+                &lt;tr&gt;
+                  &lt;th&gt;Title&lt;/th&gt;
+                  &lt;th&gt;Description&lt;/th&gt;
+                  &lt;th&gt;Author&lt;/th&gt;
+                  &lt;th&gt;Subreddit&lt;/th&gt;
+                &lt;/tr&gt;
+              &lt;/thead&gt;
+              &lt;tbody&gt;
+                &quot;&quot;&quot;),_display_(/*46.18*/for(post &lt;- record.getData()) yield /*46.47*/ {_display_(Seq[Any](format.raw/*46.49*/(&quot;&quot;&quot;
+                  &quot;&quot;&quot;),format.raw/*47.19*/(&quot;&quot;&quot;&lt;tr&gt;
+                    &lt;td&gt;&quot;&quot;&quot;),_display_(/*48.26*/post/*48.30*/.title),format.raw/*48.36*/(&quot;&quot;&quot;&lt;/td&gt;
+                    &lt;td&gt;
+                      &quot;&quot;&quot;),_display_(/*50.24*/if(post.selftext.isEmpty())/*50.51*/ {_display_(Seq[Any](format.raw/*50.53*/(&quot;&quot;&quot;
+                        &quot;&quot;&quot;),format.raw/*51.25*/(&quot;&quot;&quot;-
+                      &quot;&quot;&quot;)))}/*52.25*/else/*52.30*/{_display_(Seq[Any](format.raw/*52.31*/(&quot;&quot;&quot;
+                        &quot;&quot;&quot;),_display_(/*53.26*/post/*53.30*/.selftext),format.raw/*53.39*/(&quot;&quot;&quot;
+                      &quot;&quot;&quot;)))}),format.raw/*54.24*/(&quot;&quot;&quot;
+                    &quot;&quot;&quot;),format.raw/*55.21*/(&quot;&quot;&quot;&lt;/td&gt;
+                    &lt;td&gt;&lt;a href=&quot;/user/&quot;&quot;&quot;),_display_(/*56.41*/post/*56.45*/.author),format.raw/*56.52*/(&quot;&quot;&quot;&quot;&gt;&quot;&quot;&quot;),_display_(/*56.55*/post/*56.59*/.author),format.raw/*56.66*/(&quot;&quot;&quot;&lt;/a&gt;&lt;/td&gt;
+                    &lt;td&gt;&lt;a href=&quot;/thread/&quot;&quot;&quot;),_display_(/*57.43*/post/*57.47*/.subreddit),format.raw/*57.57*/(&quot;&quot;&quot;&quot;&gt;&quot;&quot;&quot;),_display_(/*57.60*/post/*57.64*/.subreddit),format.raw/*57.74*/(&quot;&quot;&quot;&lt;/a&gt;&lt;/td&gt;
+                  &lt;/tr&gt;
+                &quot;&quot;&quot;)))}),format.raw/*59.18*/(&quot;&quot;&quot;
+              &quot;&quot;&quot;),format.raw/*60.15*/(&quot;&quot;&quot;&lt;/tbody&gt;
+            &lt;/table&gt;
+          &lt;/div&gt;
+        &quot;&quot;&quot;)))}/*63.11*/else/*63.16*/{_display_(Seq[Any](format.raw/*63.17*/(&quot;&quot;&quot;
+          &quot;&quot;&quot;),format.raw/*64.11*/(&quot;&quot;&quot;&lt;h4 class=&quot;subtitle is-6&quot;&gt;No results found&lt;/h4&gt;
+        &quot;&quot;&quot;)))}),format.raw/*65.10*/(&quot;&quot;&quot;
+
+        &quot;&quot;&quot;),format.raw/*67.9*/(&quot;&quot;&quot;&lt;hr /&gt;
+      &lt;/section&gt;
+<span class="fc" id="L99">    &quot;&quot;&quot;)))}),format.raw/*69.6*/(&quot;&quot;&quot;</span>
+
+<span class="pc bpc" id="L101" title="1 of 2 branches missed.">    &quot;&quot;&quot;),_display_(/*71.6*/if(!data.isEmpty())/*71.25*/ {_display_(Seq[Any](format.raw/*71.27*/(&quot;&quot;&quot;</span>
+<span class="nc" id="L102">      &quot;&quot;&quot;),format.raw/*72.7*/(&quot;&quot;&quot;&lt;div class=&quot;is-flex is-justify-content-center&quot;&gt;</span>
+<span class="nc" id="L103">        &lt;button class=&quot;button&quot; onclick=&quot;window.scrollTo(&quot;&quot;&quot;),format.raw/*73.57*/(&quot;&quot;&quot;{&quot;&quot;&quot;),format.raw/*73.58*/(&quot;&quot;&quot; &quot;&quot;&quot;),format.raw/*73.59*/(&quot;&quot;&quot;top: 0, left: 0, behavior: 'smooth' &quot;&quot;&quot;),format.raw/*73.95*/(&quot;&quot;&quot;}&quot;&quot;&quot;),format.raw/*73.96*/(&quot;&quot;&quot;)&quot;&gt;Go to top&lt;/button&gt;</span>
+      &lt;/div&gt;
+<span class="fc" id="L105">    &quot;&quot;&quot;)))}),format.raw/*75.6*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L106">  &quot;&quot;&quot;),format.raw/*76.3*/(&quot;&quot;&quot;&lt;/div&gt;</span>
+<span class="fc" id="L107">&quot;&quot;&quot;)))}),format.raw/*77.2*/(&quot;&quot;&quot;</span>
+&quot;&quot;&quot;))
+      }
+    }
+  }
+
+<span class="fc" id="L113">  def render(data:List[QuerySearchResult]): play.twirl.api.HtmlFormat.Appendable = apply(data)</span>
+
+<span class="nc" id="L115">  def f:((List[QuerySearchResult]) =&gt; play.twirl.api.HtmlFormat.Appendable) = (data) =&gt; apply(data)</span>
+
+<span class="nc" id="L117">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  SOURCE: app/views/index.scala.html
+                  HASH: 3f7dc3cdd2934df573a9bbe1b856d3fe18ae08ac
+                  MATRIX: 924-&gt;1|1029-&gt;35|1073-&gt;51|1100-&gt;53|1123-&gt;68|1162-&gt;70|1191-&gt;73|1750-&gt;606|1785-&gt;625|1825-&gt;627|1859-&gt;634|2027-&gt;775|2042-&gt;781|2079-&gt;797|2122-&gt;813|2137-&gt;819|2174-&gt;835|2213-&gt;846|2270-&gt;876|2308-&gt;905|2348-&gt;907|2387-&gt;918|2795-&gt;1299|2840-&gt;1328|2880-&gt;1330|2927-&gt;1349|2984-&gt;1379|2997-&gt;1383|3024-&gt;1389|3105-&gt;1443|3141-&gt;1470|3181-&gt;1472|3234-&gt;1497|3278-&gt;1523|3291-&gt;1528|3330-&gt;1529|3383-&gt;1555|3396-&gt;1559|3426-&gt;1568|3481-&gt;1592|3530-&gt;1613|3603-&gt;1659|3616-&gt;1663|3644-&gt;1670|3674-&gt;1673|3687-&gt;1677|3715-&gt;1684|3794-&gt;1736|3807-&gt;1740|3838-&gt;1750|3868-&gt;1753|3881-&gt;1757|3912-&gt;1767|3994-&gt;1818|4037-&gt;1833|4112-&gt;1890|4125-&gt;1895|4164-&gt;1896|4203-&gt;1907|4291-&gt;1964|4328-&gt;1974|4387-&gt;2003|4420-&gt;2010|4448-&gt;2029|4488-&gt;2031|4522-&gt;2038|4654-&gt;2142|4683-&gt;2143|4712-&gt;2144|4776-&gt;2180|4805-&gt;2181|4875-&gt;2221|4905-&gt;2224|4943-&gt;2232
+                  LINES: 27-&gt;1|30-&gt;2|33-&gt;3|34-&gt;4|34-&gt;4|34-&gt;4|35-&gt;5|54-&gt;24|54-&gt;24|54-&gt;24|55-&gt;25|58-&gt;28|58-&gt;28|58-&gt;28|59-&gt;29|59-&gt;29|59-&gt;29|60-&gt;30|64-&gt;34|64-&gt;34|64-&gt;34|65-&gt;35|76-&gt;46|76-&gt;46|76-&gt;46|77-&gt;47|78-&gt;48|78-&gt;48|78-&gt;48|80-&gt;50|80-&gt;50|80-&gt;50|81-&gt;51|82-&gt;52|82-&gt;52|82-&gt;52|83-&gt;53|83-&gt;53|83-&gt;53|84-&gt;54|85-&gt;55|86-&gt;56|86-&gt;56|86-&gt;56|86-&gt;56|86-&gt;56|86-&gt;56|87-&gt;57|87-&gt;57|87-&gt;57|87-&gt;57|87-&gt;57|87-&gt;57|89-&gt;59|90-&gt;60|93-&gt;63|93-&gt;63|93-&gt;63|94-&gt;64|95-&gt;65|97-&gt;67|99-&gt;69|101-&gt;71|101-&gt;71|101-&gt;71|102-&gt;72|103-&gt;73|103-&gt;73|103-&gt;73|103-&gt;73|103-&gt;73|105-&gt;75|106-&gt;76|107-&gt;77
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

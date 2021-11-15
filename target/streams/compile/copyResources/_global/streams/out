@@ -1,0 +1,4 @@
+[0m[[0m[0mdebug[0m] [0m[0mCopy resource mappings: [0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/saghanamaheshsarma/Documents/SOEN_PROJECT_MAIN/SOEN6441_SSJ/conf/logback.xml,/Users/saghanamaheshsarma/Documents/SOEN_PROJECT_MAIN/SOEN6441_SSJ/target/scala-2.13/classes/logback.xml)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/saghanamaheshsarma/Documents/SOEN_PROJECT_MAIN/SOEN6441_SSJ/conf/application.conf,/Users/saghanamaheshsarma/Documents/SOEN_PROJECT_MAIN/SOEN6441_SSJ/target/scala-2.13/classes/application.conf)[0m
+[0m[[0m[0mdebug[0m] [0m[0m	(/Users/saghanamaheshsarma/Documents/SOEN_PROJECT_MAIN/SOEN6441_SSJ/conf/routes,/Users/saghanamaheshsarma/Documents/SOEN_PROJECT_MAIN/SOEN6441_SSJ/target/scala-2.13/classes/routes)[0m
