@@ -1,5 +1,7 @@
 package models;
-
+/**
+ * This class initializes all the attributes pertaining to Reddit
+ */
 public class SearchResult {
   public String title;
   public String author;
