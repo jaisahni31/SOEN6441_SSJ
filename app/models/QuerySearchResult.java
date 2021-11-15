@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.*;
 import play.libs.Json;
 
 import static java.util.stream.Collectors.*;
+
 /**
  * This class will store all the data regarding all the Reddit Posts pertaining to a particular search term.
  * @author Saghana Mahesh Sarma
@@ -37,6 +38,7 @@ public class QuerySearchResult {
     this.allPosts = new ArrayList<>();
     this.analytics = new HashMap<String, Integer>();
   }
+
   /**
    * This is the getter method to get the search term associated with the search results
    * @author Saghana Mahesh Sarma
@@ -44,10 +46,12 @@ public class QuerySearchResult {
    * @author Jai Sahni
    * @return The search term associated with this search result
    * */
+
   public String getSearchTerm() {
     return searchTerm;
   }
- /**
+
+  /**
    * This is the method to clean the content of unrequired symbols
    * @author Saghana Mahesh Sarma
    * @author Sumit Ramesh Bhiungade
@@ -68,6 +72,7 @@ public class QuerySearchResult {
       .replace(")", "")
       .replace("-", "");
   }
+
   /**
    * This method is used to fetch the required data associated with a search term from Reddit, map it to the model class {@link SearchResult},
    * <p>
@@ -101,7 +106,8 @@ public class QuerySearchResult {
       return posts;
     });
   }
- /**
+
+  /**
    * This method used to fetch the reddit posts under a particular subreddits
    * @author Jai Sahni
    * @param helper - This is the corresponding implementation you want to use to fetch comments
@@ -130,27 +136,45 @@ public class QuerySearchResult {
 
   /**
    * This method is a getter method that returns all reddit posts
+   * @author Saghana Mahesh Sarma
    * @return all reddit posts
    */
   public List<SearchResult> getAllPosts(){
     return this.allPosts;
   }
- /**
+
+  /**
    * This is the getter method to return all the posts along with their data under a given search term
+   * @author Saghana Mahesh Sarma
    * @return A list of all Reddit data({@link SearchResult})
    * */
   public List<SearchResult> getData(){
     return this.posts;
   }
 
+  /**
+   * This is a setter method that stores analytics data in the field instance
+   * @author Saghana Mahesh Sarma
+   * @param analytics HashMap of words and their frequency
+   */
   public void setAnalytics(HashMap<String, Integer> analytics) {
     this.analytics = analytics;
   }
 
+  /**
+   * This is a getter method that returns the latest analytics HashMap
+   * @author Saghana Mahesh Sarma
+   * @return analytics HashMap of words and their frequency
+   */
   public HashMap<String, Integer> getAnalyticsData() {
     return this.analytics;
   }
 
+  /**
+   * Getter method to get the formatted analytics data from the instance as a list
+   * @author Saghana Mahesh Sarma
+   * @return List of words and their frequencies
+   */
   public List<Map.Entry<String,Integer>> getAnalytics() {
     return analytics
       .entrySet()
@@ -158,9 +182,10 @@ public class QuerySearchResult {
       .sorted((k1, k2) -> -k1.getValue().compareTo(k2.getValue()))
       .collect(Collectors.toList());
   }
- /**
+
+  /**
    * This is setter method that can be used to set the reddit data for given search term
-   * @author chiragdahiya
+   * @author Saghana Mahesh Sarma
    * @param posts - List of reddit data({@link SearchResult}) for given search term
    * */
   public void setKeyTermData(List<SearchResult> posts) {
