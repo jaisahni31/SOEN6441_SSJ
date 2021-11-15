@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RedditHelper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">Reddit</a> &gt; <span class="el_source">RedditHelper.java</span></div><h1>RedditHelper.java</h1><pre class="source lang-java linenums">package Reddit;
+
+import models.*;
+import javax.inject.Inject;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import play.mvc.*;
+import play.api.libs.json.Json;
+import play.libs.ws.*;
+import play.api.Application;
+import java.util.concurrent.CompletionStage;
+import java.util.function.Function;
+
+import com.fasterxml.jackson.databind.*;
+/**
+ * This class provides the implementations of different Reddit post lookups
+ * @author Saghana Mahesh Sarma
+ * @author Sumit Ramesh Bhiungade
+ * @author Jai Sahni
+ * */
+public class RedditHelper {
+  private final WSClient ws;
+  private final String endpoint;
+
+<span class="nc" id="L28">  public RedditHelper(WSClient ws, String endpoint) {</span>
+<span class="nc" id="L29">    this.ws = ws;</span>
+<span class="nc" id="L30">    this.endpoint = endpoint;</span>
+<span class="nc" id="L31">  }</span>
+
+  private WSRequest getWSInstance() {
+<span class="nc" id="L34">    WSRequest req = ws.url(endpoint + &quot;/submission&quot;);</span>
+<span class="nc" id="L35">    req.addQueryParameter(&quot;over_18&quot;, &quot;false&quot;);</span>
+<span class="nc" id="L36">    return req;</span>
+  }
+
+  private Function&lt;WSResponse, List&lt;SearchResult&gt;&gt; formatResponse() throws NullPointerException {
+<span class="nc" id="L40">    return (WSResponse res) -&gt; {</span>
+      try {
+<span class="nc" id="L42">        ObjectMapper mapper = new ObjectMapper();</span>
+<span class="nc" id="L43">        List&lt;SearchResult&gt; postList = new ArrayList&lt;SearchResult&gt;();</span>
+<span class="nc" id="L44">        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);</span>
+<span class="nc" id="L45">        postList = Arrays.asList(</span>
+<span class="nc" id="L46">          mapper.readValue(</span>
+<span class="nc" id="L47">            res.asJson().get(&quot;data&quot;).toString(),</span>
+            SearchResult[].class
+          )
+        );
+<span class="nc" id="L51">        return postList;</span>
+<span class="nc" id="L52">      } catch (Exception e) {</span>
+<span class="nc" id="L53">        return null;</span>
+      }
+    };
+  }
+ /**
+   * This method is used to search for Reddit Posts for a given subreddit.
+   * @author Jai Sahni
+   * @param sr - The subreddit for which we need to fetch Reddit posts
+   * @return List of reddit posts for a given subreddit
+   * */
+  public CompletionStage&lt;List&lt;SearchResult&gt;&gt; getSubredditPosts(String sr) {
+<span class="nc" id="L64">    WSRequest req = this.getWSInstance();</span>
+<span class="nc" id="L65">    req.addQueryParameter(&quot;q&quot;, &quot;&quot;);</span>
+<span class="nc" id="L66">    req.addQueryParameter(&quot;subreddit&quot;, sr);</span>
+<span class="nc" id="L67">    req.addQueryParameter(&quot;size&quot;, &quot;10&quot;);</span>
+
+<span class="nc" id="L69">    return req.get().thenApply(formatResponse());</span>
+  }
+ /**
+   * This method is used to search for Reddit Posts for a given author.
+   * @author Saghana Mahesh Sarma
+   * @param author - The author for which we need to fetch Reddit posts
+   * @return List of reddit posts for a given user
+   * */
+  public CompletionStage&lt;List&lt;SearchResult&gt;&gt; getUserPosts(String author) {
+<span class="nc" id="L78">    WSRequest req = this.getWSInstance();</span>
+<span class="nc" id="L79">    req.addQueryParameter(&quot;q&quot;, &quot;&quot;);</span>
+<span class="nc" id="L80">    req.addQueryParameter(&quot;author&quot;, author);</span>
+<span class="nc" id="L81">    req.addQueryParameter(&quot;size&quot;, &quot;10&quot;);</span>
+
+<span class="nc" id="L83">    return req.get().thenApply(formatResponse());</span>
+  }
+  /**
+   * This method is used to search for Reddit Posts for a given search term.
+   * @author Saghana Mahesh Sarma
+   * @author Sumit Ramesh Bhiungade
+   * @author Jai Sahni
+   * @param query - The search term for which reddit posts need to be obtained
+   * @return List of reddit posts for a given query
+   * */
+  public CompletionStage&lt;List&lt;SearchResult&gt;&gt; getSearchResult(String query) {
+<span class="nc" id="L94">    WSRequest req = this.getWSInstance();</span>
+<span class="nc" id="L95">    req.addQueryParameter(&quot;q&quot;, query);</span>
+<span class="nc" id="L96">    req.addQueryParameter(&quot;size&quot;, &quot;50&quot;);</span>
+
+<span class="nc" id="L98">    return req.get().thenApply(formatResponse());</span>
+  }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

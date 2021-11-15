@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>main.template.scala</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">views.html</a> &gt; <span class="el_source">main.template.scala</span></div><h1>main.template.scala</h1><pre class="source lang-java linenums">
+package views.html
+
+import _root_.play.twirl.api.TwirlFeatureImports._
+import _root_.play.twirl.api.TwirlHelperImports._
+import _root_.play.twirl.api.Html
+import _root_.play.twirl.api.JavaScript
+import _root_.play.twirl.api.Txt
+import _root_.play.twirl.api.Xml
+import models._
+import controllers._
+import play.api.i18n._
+import views.html._
+import play.api.templates.PlayMagic._
+import java.lang._
+import java.util._
+import play.core.j.PlayMagicForJava._
+import play.mvc._
+import play.api.data.Field
+import play.data._
+import play.core.j.PlayFormsMagicForJava._
+import scala.jdk.CollectionConverters._
+
+<span class="pc" id="L24">object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[String,Html,play.twirl.api.HtmlFormat.Appendable] {</span>
+
+  /*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ */
+  def apply/*7.2*/(title: String)(content: Html):play.twirl.api.HtmlFormat.Appendable = {
+<span class="fc" id="L33">    _display_ {</span>
+      {
+
+
+<span class="fc" id="L37">Seq[Any](format.raw/*8.1*/(&quot;&quot;&quot;</span>
+<span class="fc" id="L38">&quot;&quot;&quot;),format.raw/*9.1*/(&quot;&quot;&quot;&lt;!DOCTYPE html&gt;</span>
+&lt;html lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;
+    &lt;head&gt;
+<span class="fc" id="L41">        &lt;title&gt;&quot;&quot;&quot;),_display_(/*12.17*/title),format.raw/*12.22*/(&quot;&quot;&quot;&lt;/title&gt;</span>
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+<span class="fc" id="L43">        &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href='&quot;&quot;&quot;),_display_(/*14.54*/routes/*14.60*/.Assets.versioned(&quot;stylesheets/main.css&quot;)),format.raw/*14.101*/(&quot;&quot;&quot;' /&gt;</span>
+<span class="fc" id="L44">        &lt;link rel=&quot;stylesheet&quot; media=&quot;screen&quot; href='&quot;&quot;&quot;),_display_(/*15.54*/routes/*15.60*/.Assets.versioned(&quot;stylesheets/prism.css&quot;)),format.raw/*15.102*/(&quot;&quot;&quot;' /&gt;</span>
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css&quot; /&gt;
+
+<span class="fc" id="L47">        &lt;link rel=&quot;shortcut icon&quot; type=&quot;image/png&quot; href='&quot;&quot;&quot;),_display_(/*18.59*/routes/*18.65*/.Assets.versioned(&quot;images/favicon.png&quot;)),format.raw/*18.104*/(&quot;&quot;&quot;'&gt;</span>
+        &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+<span class="fc" id="L51">        &lt;main class=&quot;section is-flex-direction-column is-align-items-center&quot;&gt;&quot;&quot;&quot;),_display_(/*22.79*/content),format.raw/*22.86*/(&quot;&quot;&quot;&lt;/main&gt;</span>
+
+<span class="fc" id="L53">        &lt;script src='&quot;&quot;&quot;),_display_(/*24.23*/routes/*24.29*/.Assets.versioned(&quot;javascripts/main.js&quot;)),format.raw/*24.69*/(&quot;&quot;&quot;' type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+<span class="fc" id="L54">        &lt;script src='&quot;&quot;&quot;),_display_(/*25.23*/routes/*25.29*/.Assets.versioned(&quot;javascripts/prism.js&quot;)),format.raw/*25.70*/(&quot;&quot;&quot;' type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</span>
+    &lt;/body&gt;
+
+&lt;/html&gt;
+&quot;&quot;&quot;))
+      }
+    }
+  }
+
+<span class="nc" id="L63">  def render(title:String,content:Html): play.twirl.api.HtmlFormat.Appendable = apply(title)(content)</span>
+
+<span class="nc" id="L65">  def f:((String) =&gt; (Html) =&gt; play.twirl.api.HtmlFormat.Appendable) = (title) =&gt; (content) =&gt; apply(title)(content)</span>
+
+<span class="nc" id="L67">  def ref: this.type = this</span>
+
+}
+
+
+              /*
+                  -- GENERATED --
+                  SOURCE: app/views/main.scala.html
+                  HASH: 9d79a956dc8257c4f15b02f951cf5afc6f5c2542
+                  MATRIX: 1165-&gt;260|1289-&gt;291|1316-&gt;292|1413-&gt;362|1439-&gt;367|1609-&gt;510|1624-&gt;516|1687-&gt;557|1772-&gt;615|1787-&gt;621|1851-&gt;663|2042-&gt;828|2057-&gt;834|2118-&gt;873|2346-&gt;1074|2374-&gt;1081|2432-&gt;1112|2447-&gt;1118|2508-&gt;1158|2592-&gt;1215|2607-&gt;1221|2669-&gt;1262
+                  LINES: 32-&gt;7|37-&gt;8|38-&gt;9|41-&gt;12|41-&gt;12|43-&gt;14|43-&gt;14|43-&gt;14|44-&gt;15|44-&gt;15|44-&gt;15|47-&gt;18|47-&gt;18|47-&gt;18|51-&gt;22|51-&gt;22|53-&gt;24|53-&gt;24|53-&gt;24|54-&gt;25|54-&gt;25|54-&gt;25
+                  -- GENERATED --
+              */
+          
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
