@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# SOEN6441_SSJ
-=======
+SOEN_ASSIGNMENT (RedditLytics)
 
->>>>>>> c0eed5c26792ae7af1bc838e7df1a08a16186b59
+This uses pushshift API to fetch reddit results of details of user and it sub-reddits
+
