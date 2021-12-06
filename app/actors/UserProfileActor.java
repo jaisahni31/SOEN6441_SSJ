@@ -49,6 +49,15 @@ public class UserProfileActor extends AbstractActorWithTimers {
             this.keyword = keyword;
         }
     }
+    
+    @Override
+    public void preStart() {
+        getTimers().startPeriodicTimer(
+                        "Timer",
+                        new Tick(),
+                        Duration.create(10, TimeUnit.SECONDS)
+                );
+    }
 
     /**
      * Notifies clients about updates to the User Profile
