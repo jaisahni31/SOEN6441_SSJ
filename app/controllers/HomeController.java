@@ -44,6 +44,7 @@ public class HomeController extends Controller implements WSBodyReadables, WSBod
 
     private ActorRef subredditActor;
     private ActorRef mainActor;
+    private ActorRef userProfileActor;
 
     @Inject
     public HomeController(WSClient ws, ActorSystem actorSystem, Materializer materializer) {
@@ -54,6 +55,8 @@ public class HomeController extends Controller implements WSBodyReadables, WSBod
         RedditHelper helperInstance = new RedditHelper(ws, endpoint);
         this.mainActor = actorSystem.actorOf(SearchActor.props(helperInstance), "search");
         this.subredditActor = actorSystem.actorOf(SubredditActor.props(helperInstance), "thread");
+        this.userProfileActor = actorSystem.actorOf(UserProfileActor.props(helperInstance), "userProfile");
+
     }
 
     /**
