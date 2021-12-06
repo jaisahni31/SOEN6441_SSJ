@@ -99,10 +99,21 @@ public class UserActor extends AbstractActor {
         var actor = context().actorSelection("/user/" + type);
 
         switch (type) {
+	    case "close": {
+                self().tell(PoisonPill.getInstance(), self());
+                break;
+            }
+			
             case "thread": {
                 actor.tell(new SubredditActor.RegisterMsg(keyword), self());
                 break;
             }
+			
+	    case "userProfile": {
+                actor.tell(new UserProfileActor.RegisterMsg(keyword), self());
+                break;
+            }
+		
 
             default: {
                 actor.tell(new SearchActor.RegisterMsg(keyword), self());
