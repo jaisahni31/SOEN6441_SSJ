@@ -21,22 +21,22 @@ import play.data._
 import play.core.j.PlayFormsMagicForJava._
 import scala.jdk.CollectionConverters._
 
-object thread extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[QuerySearchResult,play.twirl.api.HtmlFormat.Appendable] {
+object thread extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[QuerySearchResult,play.mvc.Http.Request,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(data : QuerySearchResult):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(data : QuerySearchResult, request: play.mvc.Http.Request):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 /*2.2*/import helper._
 
 
 Seq[Any](format.raw/*3.1*/("""
-"""),_display_(/*4.2*/main("Subreddit")/*4.19*/ {_display_(Seq[Any](format.raw/*4.21*/("""
+"""),_display_(/*4.2*/main("Subreddit", request)/*4.28*/ {_display_(Seq[Any](format.raw/*4.30*/("""
   """),format.raw/*5.3*/("""<div class="container">
     <a href="/">Go Back</a><br/><br/>
 
     <h2 class="title">Subreddit</h2>
-    <h3 class="subtitle is-5">r/"""),_display_(/*9.34*/data/*9.38*/.getSearchTerm()),format.raw/*9.54*/("""</h3>
+    <h3 class="subtitle is-5" data-search=""""),_display_(/*9.45*/data/*9.49*/.getSearchTerm()),format.raw/*9.65*/("""">r/"""),_display_(/*9.70*/data/*9.74*/.getSearchTerm()),format.raw/*9.90*/("""</h3>
 
     """),_display_(/*11.6*/if(!data.getData().isEmpty())/*11.35*/ {_display_(Seq[Any](format.raw/*11.37*/("""
       """),format.raw/*12.7*/("""<div class="table-container">
@@ -77,9 +77,9 @@ Seq[Any](format.raw/*3.1*/("""
     }
   }
 
-  def render(data:QuerySearchResult): play.twirl.api.HtmlFormat.Appendable = apply(data)
+  def render(data:QuerySearchResult,request:play.mvc.Http.Request): play.twirl.api.HtmlFormat.Appendable = apply(data,request)
 
-  def f:((QuerySearchResult) => play.twirl.api.HtmlFormat.Appendable) = (data) => apply(data)
+  def f:((QuerySearchResult,play.mvc.Http.Request) => play.twirl.api.HtmlFormat.Appendable) = (data,request) => apply(data,request)
 
   def ref: this.type = this
 
@@ -89,9 +89,9 @@ Seq[Any](format.raw/*3.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/thread.scala.html
-                  HASH: f71aa242d9eb4861f3629adbc801d73b794713e7
-                  MATRIX: 919->1|1018->29|1062->45|1089->47|1114->64|1153->66|1182->69|1341->202|1353->206|1389->222|1427->234|1465->263|1505->265|1539->272|1903->609|1946->636|1986->638|2029->653|2082->679|2095->683|2122->689|2195->735|2231->762|2271->764|2320->785|2360->807|2373->812|2412->813|2461->835|2474->839|2504->848|2555->868|2600->885|2669->927|2682->931|2710->938|2740->941|2753->945|2781->952|2856->1000|2869->1004|2900->1014|2930->1017|2943->1021|2974->1031|3048->1074|3087->1085|3149->1130|3162->1135|3201->1136|3235->1143|3318->1196|3348->1199|3386->1207
-                  LINES: 27->1|30->2|33->3|34->4|34->4|34->4|35->5|39->9|39->9|39->9|41->11|41->11|41->11|42->12|53->23|53->23|53->23|54->24|55->25|55->25|55->25|57->27|57->27|57->27|58->28|59->29|59->29|59->29|60->30|60->30|60->30|61->31|62->32|63->33|63->33|63->33|63->33|63->33|63->33|64->34|64->34|64->34|64->34|64->34|64->34|66->36|67->37|70->40|70->40|70->40|71->41|72->42|73->43|74->44
+                  HASH: 9ae6585399cb87e717bf47b8720c5c0be4f682d7
+                  MATRIX: 941->1|1072->61|1116->77|1143->79|1177->105|1216->107|1245->110|1415->254|1427->258|1463->274|1494->279|1506->283|1542->299|1580->311|1618->340|1658->342|1692->349|2056->686|2099->713|2139->715|2182->730|2235->756|2248->760|2275->766|2348->812|2384->839|2424->841|2473->862|2513->884|2526->889|2565->890|2614->912|2627->916|2657->925|2708->945|2753->962|2822->1004|2835->1008|2863->1015|2893->1018|2906->1022|2934->1029|3009->1077|3022->1081|3053->1091|3083->1094|3096->1098|3127->1108|3201->1151|3240->1162|3302->1207|3315->1212|3354->1213|3388->1220|3471->1273|3501->1276|3539->1284
+                  LINES: 27->1|30->2|33->3|34->4|34->4|34->4|35->5|39->9|39->9|39->9|39->9|39->9|39->9|41->11|41->11|41->11|42->12|53->23|53->23|53->23|54->24|55->25|55->25|55->25|57->27|57->27|57->27|58->28|59->29|59->29|59->29|60->30|60->30|60->30|61->31|62->32|63->33|63->33|63->33|63->33|63->33|63->33|64->34|64->34|64->34|64->34|64->34|64->34|66->36|67->37|70->40|70->40|70->40|71->41|72->42|73->43|74->44
                   -- GENERATED --
               */
           

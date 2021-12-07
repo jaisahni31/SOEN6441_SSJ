@@ -21,17 +21,17 @@ import play.data._
 import play.core.j.PlayFormsMagicForJava._
 import scala.jdk.CollectionConverters._
 
-object profile extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[QuerySearchResult,play.twirl.api.HtmlFormat.Appendable] {
+object profile extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[QuerySearchResult,play.mvc.Http.Request,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(data : QuerySearchResult):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(data : QuerySearchResult, request: play.mvc.Http.Request):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 /*2.2*/import helper._
 
 
 Seq[Any](format.raw/*3.1*/("""
-"""),_display_(/*4.2*/main("Profile")/*4.17*/ {_display_(Seq[Any](format.raw/*4.19*/("""
+"""),_display_(/*4.2*/main("Profile", request)/*4.26*/ {_display_(Seq[Any](format.raw/*4.28*/("""
   """),format.raw/*5.3*/("""<div class="container">
     <a href="/">Go Back</a><br/><br/>
 
@@ -85,9 +85,9 @@ Seq[Any](format.raw/*3.1*/("""
     }
   }
 
-  def render(data:QuerySearchResult): play.twirl.api.HtmlFormat.Appendable = apply(data)
+  def render(data:QuerySearchResult,request:play.mvc.Http.Request): play.twirl.api.HtmlFormat.Appendable = apply(data,request)
 
-  def f:((QuerySearchResult) => play.twirl.api.HtmlFormat.Appendable) = (data) => apply(data)
+  def f:((QuerySearchResult,play.mvc.Http.Request) => play.twirl.api.HtmlFormat.Appendable) = (data,request) => apply(data,request)
 
   def ref: this.type = this
 
@@ -97,8 +97,8 @@ Seq[Any](format.raw/*3.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/profile.scala.html
-                  HASH: f1d08a4376327f8a7455adf59c8adf7f0cef54a8
-                  MATRIX: 920->1|1019->29|1063->45|1090->47|1113->62|1152->64|1181->67|1314->175|1351->204|1390->206|1424->213|1556->318|1569->322|1623->355|1691->396|1704->400|1749->424|1822->470|1835->474|1891->509|1964->555|1977->559|2030->591|2494->1028|2537->1055|2577->1057|2620->1072|2673->1098|2686->1102|2713->1108|2786->1154|2822->1181|2862->1183|2911->1204|2951->1226|2964->1231|3003->1232|3052->1254|3065->1258|3095->1267|3146->1287|3191->1304|3260->1346|3273->1350|3301->1357|3331->1360|3344->1364|3372->1371|3447->1419|3460->1423|3491->1433|3521->1436|3534->1440|3565->1450|3639->1493|3678->1504|3740->1549|3753->1554|3792->1555|3826->1562|3909->1615|3939->1618|3977->1626
+                  HASH: 660ff70c8215ea2fcebcd17a99abc16bddc0932d
+                  MATRIX: 942->1|1073->61|1117->77|1144->79|1176->103|1215->105|1244->108|1377->216|1414->245|1453->247|1487->254|1619->359|1632->363|1686->396|1754->437|1767->441|1812->465|1885->511|1898->515|1954->550|2027->596|2040->600|2093->632|2557->1069|2600->1096|2640->1098|2683->1113|2736->1139|2749->1143|2776->1149|2849->1195|2885->1222|2925->1224|2974->1245|3014->1267|3027->1272|3066->1273|3115->1295|3128->1299|3158->1308|3209->1328|3254->1345|3323->1387|3336->1391|3364->1398|3394->1401|3407->1405|3435->1412|3510->1460|3523->1464|3554->1474|3584->1477|3597->1481|3628->1491|3702->1534|3741->1545|3803->1590|3816->1595|3855->1596|3889->1603|3972->1656|4002->1659|4040->1667
                   LINES: 27->1|30->2|33->3|34->4|34->4|34->4|35->5|39->9|39->9|39->9|40->10|42->12|42->12|42->12|43->13|43->13|43->13|44->14|44->14|44->14|45->15|45->15|45->15|61->31|61->31|61->31|62->32|63->33|63->33|63->33|65->35|65->35|65->35|66->36|67->37|67->37|67->37|68->38|68->38|68->38|69->39|70->40|71->41|71->41|71->41|71->41|71->41|71->41|72->42|72->42|72->42|72->42|72->42|72->42|74->44|75->45|78->48|78->48|78->48|79->49|80->50|81->51|82->52
                   -- GENERATED --
               */

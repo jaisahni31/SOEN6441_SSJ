@@ -21,17 +21,17 @@ import play.data._
 import play.core.j.PlayFormsMagicForJava._
 import scala.jdk.CollectionConverters._
 
-object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[List[QuerySearchResult],play.twirl.api.HtmlFormat.Appendable] {
+object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[List[QuerySearchResult],play.mvc.Http.Request,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(data : List[QuerySearchResult]):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(data : List[QuerySearchResult], request: play.mvc.Http.Request):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 /*2.2*/import helper._
 
 
 Seq[Any](format.raw/*3.1*/("""
-"""),_display_(/*4.2*/main("Welcome")/*4.17*/ {_display_(Seq[Any](format.raw/*4.19*/("""
+"""),_display_(/*4.2*/main("Welcome", request)/*4.26*/ {_display_(Seq[Any](format.raw/*4.28*/("""
   """),format.raw/*5.3*/("""<div class="container">
     <div class="search-wrapper">
       <div class="search-wrapper__box">
@@ -52,7 +52,7 @@ Seq[Any](format.raw/*3.1*/("""
     </div>
 
     """),_display_(/*24.6*/for(record <- data) yield /*24.25*/ {_display_(Seq[Any](format.raw/*24.27*/("""
-      """),format.raw/*25.7*/("""<section class="searchResultBox">
+      """),format.raw/*25.7*/("""<section class="searchResultBox" data-search=""""),_display_(/*25.54*/record/*25.60*/.getSearchTerm()),format.raw/*25.76*/("""">
         <h3 class="subtitle is-5 has-text-weight-bold">
           Search terms:
           <a href="/stats/"""),_display_(/*28.28*/record/*28.34*/.getSearchTerm()),format.raw/*28.50*/("""">
@@ -110,9 +110,9 @@ Seq[Any](format.raw/*3.1*/("""
     }
   }
 
-  def render(data:List[QuerySearchResult]): play.twirl.api.HtmlFormat.Appendable = apply(data)
+  def render(data:List[QuerySearchResult],request:play.mvc.Http.Request): play.twirl.api.HtmlFormat.Appendable = apply(data,request)
 
-  def f:((List[QuerySearchResult]) => play.twirl.api.HtmlFormat.Appendable) = (data) => apply(data)
+  def f:((List[QuerySearchResult],play.mvc.Http.Request) => play.twirl.api.HtmlFormat.Appendable) = (data,request) => apply(data,request)
 
   def ref: this.type = this
 
@@ -122,9 +122,9 @@ Seq[Any](format.raw/*3.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/index.scala.html
-                  HASH: 3f7dc3cdd2934df573a9bbe1b856d3fe18ae08ac
-                  MATRIX: 924->1|1029->35|1073->51|1100->53|1123->68|1162->70|1191->73|1750->606|1785->625|1825->627|1859->634|2027->775|2042->781|2079->797|2122->813|2137->819|2174->835|2213->846|2270->876|2308->905|2348->907|2387->918|2795->1299|2840->1328|2880->1330|2927->1349|2984->1379|2997->1383|3024->1389|3105->1443|3141->1470|3181->1472|3234->1497|3278->1523|3291->1528|3330->1529|3383->1555|3396->1559|3426->1568|3481->1592|3530->1613|3603->1659|3616->1663|3644->1670|3674->1673|3687->1677|3715->1684|3794->1736|3807->1740|3838->1750|3868->1753|3881->1757|3912->1767|3994->1818|4037->1833|4112->1890|4125->1895|4164->1896|4203->1907|4291->1964|4328->1974|4387->2003|4420->2010|4448->2029|4488->2031|4522->2038|4654->2142|4683->2143|4712->2144|4776->2180|4805->2181|4875->2221|4905->2224|4943->2232
-                  LINES: 27->1|30->2|33->3|34->4|34->4|34->4|35->5|54->24|54->24|54->24|55->25|58->28|58->28|58->28|59->29|59->29|59->29|60->30|64->34|64->34|64->34|65->35|76->46|76->46|76->46|77->47|78->48|78->48|78->48|80->50|80->50|80->50|81->51|82->52|82->52|82->52|83->53|83->53|83->53|84->54|85->55|86->56|86->56|86->56|86->56|86->56|86->56|87->57|87->57|87->57|87->57|87->57|87->57|89->59|90->60|93->63|93->63|93->63|94->64|95->65|97->67|99->69|101->71|101->71|101->71|102->72|103->73|103->73|103->73|103->73|103->73|105->75|106->76|107->77
+                  HASH: f63ec005c46b1ed496dd4dd909aa49d839bff837
+                  MATRIX: 946->1|1083->67|1127->83|1154->85|1186->109|1225->111|1254->114|1813->647|1848->666|1888->668|1922->675|1996->722|2011->728|2048->744|2185->854|2200->860|2237->876|2280->892|2295->898|2332->914|2371->925|2428->955|2466->984|2506->986|2545->997|2953->1378|2998->1407|3038->1409|3085->1428|3142->1458|3155->1462|3182->1468|3263->1522|3299->1549|3339->1551|3392->1576|3436->1602|3449->1607|3488->1608|3541->1634|3554->1638|3584->1647|3639->1671|3688->1692|3761->1738|3774->1742|3802->1749|3832->1752|3845->1756|3873->1763|3952->1815|3965->1819|3996->1829|4026->1832|4039->1836|4070->1846|4152->1897|4195->1912|4270->1969|4283->1974|4322->1975|4361->1986|4449->2043|4486->2053|4545->2082|4578->2089|4606->2108|4646->2110|4680->2117|4812->2221|4841->2222|4870->2223|4934->2259|4963->2260|5033->2300|5063->2303|5101->2311
+                  LINES: 27->1|30->2|33->3|34->4|34->4|34->4|35->5|54->24|54->24|54->24|55->25|55->25|55->25|55->25|58->28|58->28|58->28|59->29|59->29|59->29|60->30|64->34|64->34|64->34|65->35|76->46|76->46|76->46|77->47|78->48|78->48|78->48|80->50|80->50|80->50|81->51|82->52|82->52|82->52|83->53|83->53|83->53|84->54|85->55|86->56|86->56|86->56|86->56|86->56|86->56|87->57|87->57|87->57|87->57|87->57|87->57|89->59|90->60|93->63|93->63|93->63|94->64|95->65|97->67|99->69|101->71|101->71|101->71|102->72|103->73|103->73|103->73|103->73|103->73|105->75|106->76|107->77
                   -- GENERATED --
               */
           

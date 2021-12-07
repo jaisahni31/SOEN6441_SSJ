@@ -21,17 +21,17 @@ import play.data._
 import play.core.j.PlayFormsMagicForJava._
 import scala.jdk.CollectionConverters._
 
-object stats extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template1[QuerySearchResult,play.twirl.api.HtmlFormat.Appendable] {
+object stats extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[QuerySearchResult,play.mvc.Http.Request,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(record : QuerySearchResult):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(record : QuerySearchResult, request: play.mvc.Http.Request ):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 /*2.2*/import helper._
 
 
 Seq[Any](format.raw/*3.1*/("""
-"""),_display_(/*4.2*/main("Welcome")/*4.17*/ {_display_(Seq[Any](format.raw/*4.19*/("""
+"""),_display_(/*4.2*/main("Welcome", request)/*4.26*/ {_display_(Seq[Any](format.raw/*4.28*/("""
   """),format.raw/*5.3*/("""<div class="container">
 
     <a href="/">Go Back</a><br/><br/>
@@ -74,9 +74,9 @@ Seq[Any](format.raw/*3.1*/("""
     }
   }
 
-  def render(record:QuerySearchResult): play.twirl.api.HtmlFormat.Appendable = apply(record)
+  def render(record:QuerySearchResult,request:play.mvc.Http.Request): play.twirl.api.HtmlFormat.Appendable = apply(record,request)
 
-  def f:((QuerySearchResult) => play.twirl.api.HtmlFormat.Appendable) = (record) => apply(record)
+  def f:((QuerySearchResult,play.mvc.Http.Request) => play.twirl.api.HtmlFormat.Appendable) = (record,request) => apply(record,request)
 
   def ref: this.type = this
 
@@ -86,8 +86,8 @@ Seq[Any](format.raw/*3.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/stats.scala.html
-                  HASH: 976c764ac401ec194b8806a9ca9e1975a8ad1243
-                  MATRIX: 918->1|1019->31|1063->47|1090->49|1113->64|1152->66|1181->69|1347->209|1362->215|1399->231|1431->236|1469->248|1512->282|1552->284|1586->291|1877->555|1927->589|1967->591|2010->606|2063->632|2076->636|2108->647|2162->674|2175->678|2205->687|2275->726|2314->737|2492->887|2521->888|2550->889|2614->925|2643->926|2701->967|2714->972|2753->973|2787->980|2870->1033|2900->1036|2938->1044
+                  HASH: 721279772e25da7022dce3b396653dbe06618282
+                  MATRIX: 940->1|1074->64|1118->80|1145->82|1177->106|1216->108|1245->111|1411->251|1426->257|1463->273|1495->278|1533->290|1576->324|1616->326|1650->333|1941->597|1991->631|2031->633|2074->648|2127->674|2140->678|2172->689|2226->716|2239->720|2269->729|2339->768|2378->779|2556->929|2585->930|2614->931|2678->967|2707->968|2765->1009|2778->1014|2817->1015|2851->1022|2934->1075|2964->1078|3002->1086
                   LINES: 27->1|30->2|33->3|34->4|34->4|34->4|35->5|41->11|41->11|41->11|42->12|44->14|44->14|44->14|45->15|54->24|54->24|54->24|55->25|56->26|56->26|56->26|57->27|57->27|57->27|59->29|60->30|65->35|65->35|65->35|65->35|65->35|67->37|67->37|67->37|68->38|69->39|70->40|71->41
                   -- GENERATED --
               */

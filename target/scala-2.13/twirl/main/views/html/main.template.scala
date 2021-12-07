@@ -21,7 +21,7 @@ import play.data._
 import play.core.j.PlayFormsMagicForJava._
 import scala.jdk.CollectionConverters._
 
-object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template2[String,Html,play.twirl.api.HtmlFormat.Appendable] {
+object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template3[String,play.mvc.Http.Request,Html,play.twirl.api.HtmlFormat.Appendable] {
 
   /*
  * This template is called from the `index` template. This template
@@ -29,7 +29,7 @@ object main extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlF
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  */
-  def apply/*7.2*/(title: String)(content: Html):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*7.2*/(title: String, request: play.mvc.Http.Request)(content: Html):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
@@ -47,7 +47,7 @@ Seq[Any](format.raw/*8.1*/("""
         <link rel="shortcut icon" type="image/png" href='"""),_display_(/*18.59*/routes/*18.65*/.Assets.versioned("images/favicon.png")),format.raw/*18.104*/("""'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
-    <body>
+    <body data-ws-url=""""),_display_(/*21.25*/routes/*21.31*/.HomeController.socket.webSocketURL(request)),format.raw/*21.75*/("""">
         <main class="section is-flex-direction-column is-align-items-center">"""),_display_(/*22.79*/content),format.raw/*22.86*/("""</main>
 
         <script src='"""),_display_(/*24.23*/routes/*24.29*/.Assets.versioned("javascripts/main.js")),format.raw/*24.69*/("""' type="text/javascript"></script>
@@ -60,9 +60,9 @@ Seq[Any](format.raw/*8.1*/("""
     }
   }
 
-  def render(title:String,content:Html): play.twirl.api.HtmlFormat.Appendable = apply(title)(content)
+  def render(title:String,request:play.mvc.Http.Request,content:Html): play.twirl.api.HtmlFormat.Appendable = apply(title,request)(content)
 
-  def f:((String) => (Html) => play.twirl.api.HtmlFormat.Appendable) = (title) => (content) => apply(title)(content)
+  def f:((String,play.mvc.Http.Request) => (Html) => play.twirl.api.HtmlFormat.Appendable) = (title,request) => (content) => apply(title,request)(content)
 
   def ref: this.type = this
 
@@ -72,9 +72,9 @@ Seq[Any](format.raw/*8.1*/("""
               /*
                   -- GENERATED --
                   SOURCE: app/views/main.scala.html
-                  HASH: 9d79a956dc8257c4f15b02f951cf5afc6f5c2542
-                  MATRIX: 1165->260|1289->291|1316->292|1413->362|1439->367|1609->510|1624->516|1687->557|1772->615|1787->621|1851->663|2042->828|2057->834|2118->873|2346->1074|2374->1081|2432->1112|2447->1118|2508->1158|2592->1215|2607->1221|2669->1262
-                  LINES: 32->7|37->8|38->9|41->12|41->12|43->14|43->14|43->14|44->15|44->15|44->15|47->18|47->18|47->18|51->22|51->22|53->24|53->24|53->24|54->25|54->25|54->25
+                  HASH: 9d774603c18749fff4ee50d4bf0476683a10123e
+                  MATRIX: 1187->260|1343->323|1370->324|1467->394|1493->399|1663->542|1678->548|1741->589|1826->647|1841->653|1905->695|2096->860|2111->866|2172->905|2335->1041|2350->1047|2415->1091|2523->1172|2551->1179|2609->1210|2624->1216|2685->1256|2769->1313|2784->1319|2846->1360
+                  LINES: 32->7|37->8|38->9|41->12|41->12|43->14|43->14|43->14|44->15|44->15|44->15|47->18|47->18|47->18|50->21|50->21|50->21|51->22|51->22|53->24|53->24|53->24|54->25|54->25|54->25
                   -- GENERATED --
               */
           

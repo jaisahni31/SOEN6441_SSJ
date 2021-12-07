@@ -2,6 +2,7 @@
   <classpathentry kind="src" path="app"/>
   <classpathentry kind="src" path="conf"/>
   <classpathentry excluding="resources/" kind="src" path="test"/>
+  <classpathentry kind="src" path="test/resources"/>
   <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"></classpathentry>
   <classpathentry sourcepath="/Users/saghanamaheshsarma/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/twirl-api_2.13/1.5.1/twirl-api_2.13-1.5.1-sources.jar" kind="lib" path="/Users/saghanamaheshsarma/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/twirl-api_2.13/1.5.1/twirl-api_2.13-1.5.1.jar">
     <attributes>

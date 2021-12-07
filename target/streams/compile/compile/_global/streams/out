@@ -1,0 +1,16 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/saghanamaheshsarma/Documents/SOEN_PROJECT2/SOEN6441_SSJ/app/actors/UserProfileActor.java:58:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   variable TimeUnit[0m
+[0m[[0m[31merror[0m] [0m[0m  location: class actors.UserProfileActor[0m
+[0m[[0m[31merror[0m] [0m[0mTimeUnit[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/saghanamaheshsarma/Documents/SOEN_PROJECT2/SOEN6441_SSJ/app/actors/UserProfileActor.java:58:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   variable Duration[0m
+[0m[[0m[31merror[0m] [0m[0m  location: class actors.UserProfileActor[0m
+[0m[[0m[31merror[0m] [0m[0mDuration[0m
+[0m[[0m[31merror[0m] [0m[0m/Users/saghanamaheshsarma/Documents/SOEN_PROJECT2/SOEN6441_SSJ/app/actors/WordCountActor.java:36:1: cannot find symbol[0m
+[0m[[0m[31merror[0m] [0m[0m  symbol:   method thenApply((list)->{ [...]st; })[0m
+[0m[[0m[31merror[0m] [0m[0m  location: interface java.util.List<java.util.Map.Entry<java.lang.String,java.lang.Integer>>[0m
+[0m[[0m[31merror[0m] [0m[0mhelper[0m
+[0m[[0m[31merror[0m] [0m[0m                    .getAnalytics()[0m
+[0m[[0m[31merror[0m] [0m[0m                    .thenApply[0m
+[0m[[0m[0minfo[0m] [0m[0m/Users/saghanamaheshsarma/Documents/SOEN_PROJECT2/SOEN6441_SSJ/app/actors/SearchActor.java: Some input files use or override a deprecated API.[0m
+[0m[[0m[0minfo[0m] [0m[0m/Users/saghanamaheshsarma/Documents/SOEN_PROJECT2/SOEN6441_SSJ/app/actors/SearchActor.java: Recompile with -Xlint:deprecation for details.[0m

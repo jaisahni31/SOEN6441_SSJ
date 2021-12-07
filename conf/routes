@@ -7,6 +7,7 @@ GET      /                            controllers.HomeController.index(request:R
 GET      /lookup/:query               controllers.HomeController.search(query:String, request:Request)
 GET      /user/:id                    controllers.HomeController.searchUser(id: String, request:Request)
 GET      /thread/:subreddit           controllers.HomeController.searchThread(subreddit: String, request:Request)
+GET      /ws                          controllers.HomeController.socket
 
 # GET    /explore                     controllers.HomeController.explore
 # GET    /tutorial                    controllers.HomeController.tutorial

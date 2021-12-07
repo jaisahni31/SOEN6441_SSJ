@@ -18,16 +18,6 @@ package controllers.javascript {
     }
 
   
-    // @LINE:6
-    def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
-      "controllers.HomeController.index",
-      """
-        function() {
-          return _wA({method:"GET", url:"""" + _prefix + """"})
-        }
-      """
-    )
-  
     // @LINE:7
     def search: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.search",
@@ -48,6 +38,26 @@ package controllers.javascript {
       """
     )
   
+    // @LINE:10
+    def socket: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.socket",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "ws"})
+        }
+      """
+    )
+  
+    // @LINE:6
+    def index: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.HomeController.index",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + """"})
+        }
+      """
+    )
+  
     // @LINE:9
     def searchThread: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.HomeController.searchThread",
@@ -60,7 +70,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:16
+  // @LINE:17
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -68,7 +78,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:16
+    // @LINE:17
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
