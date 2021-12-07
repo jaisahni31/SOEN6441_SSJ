@@ -19,6 +19,12 @@ $(document).ready(function() {
                 let data = JSON.stringify({ type: 'thread', query });
                 ws.send(data);
             }
+                
+            case pathname.includes('/profile'): {
+                 let query = $('h3').attr('data-search');
+                 let data = JSON.stringify({ type: 'userProfile', query });
+                 ws.send(data);
+                        }
 
             default: {
                 let searchResults = $('section').map(function () {
