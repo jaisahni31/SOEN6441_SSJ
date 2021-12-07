@@ -43,11 +43,7 @@ public class SubredditActorTest {
 
     static ActorSystem system;
 
-    /**
-     * Setup mock server to listen to http requests being made from tests to route '/submission'
-     * and instantiate WSClient, QuerySearchResult, RedditHelper Java
-     * @author Saghana Mahesh Sarma
-     * */
+  
     @Before
     public void Setup() {
         server = Server.forRouter((components) ->
