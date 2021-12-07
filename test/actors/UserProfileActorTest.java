@@ -79,7 +79,7 @@ public class UserProfileActorTest {
             final FiniteDuration wait = FiniteDuration.create(20, TimeUnit.SECONDS);
             JsonNodeFactory factory = JsonNodeFactory.instance;
             new TestKit(system) {{
-                ActorRef profileActor = system.actorOf(UserProfileActor.props(helper), "profile");
+                ActorRef profileActor = system.actorOf(UserProfileActor.props(helper), "userProfile");
                 var root = new UserProfileActor.RegisterMsg("test");
                 profileActor.tell(root, getRef());
                 expectMsgClass(wait, UserActor.Response.class);
